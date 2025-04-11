@@ -9,25 +9,29 @@ import Dashboard from "./pages/Dashboard";
 import Assignment from "./pages/Assignment";
 import GradingResult from "./pages/GradingResult";
 import NotFound from "./pages/NotFound";
+import Index from "./pages/Index";
 
+// Create a client
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/assignment/:id" element={<Assignment />} />
-          <Route path="/results/:id" element={<GradingResult />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <TooltipProvider>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/assignment/:id" element={<Assignment />} />
+            <Route path="/results/:id" element={<GradingResult />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Toaster />
+          <Sonner />
+        </TooltipProvider>
       </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+    </QueryClientProvider>
+  );
+};
 
 export default App;

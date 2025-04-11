@@ -7,7 +7,7 @@ const Index = () => {
   
   useEffect(() => {
     // Redirect to the landing page
-    navigate("/");
+    navigate("/", { replace: true });
   }, [navigate]);
 
   // This will only show briefly before redirect
