@@ -1,23 +1,31 @@
 
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const CTA = () => {
   return (
     <section className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-primary via-secondary to-accent rounded-2xl overflow-hidden shadow-xl">
-          <div className="px-6 py-12 md:p-12 text-white">
+        <div className="bg-gradient-to-r from-primary via-secondary to-accent rounded-2xl overflow-hidden shadow-xl relative">
+          <div className="absolute inset-0 bg-grid-white/5 bg-[length:20px_20px]"></div>
+          <div className="px-6 py-12 md:p-12 text-white relative z-10">
             <div className="max-w-3xl mx-auto text-center">
+              <div className="inline-block bg-white/20 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+                Start Using AI Today
+              </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Ready to transform your grading process?
               </h2>
               <p className="text-lg mb-8 opacity-90">
-                Join thousands of educators who are saving time and providing better feedback with GradeAI.
+                Join thousands of educators who are saving time and providing better feedback with GradeAI that adapts to your unique teaching style.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-                  <Link to="/dashboard">Start Your Free Trial</Link>
+                <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 group">
+                  <Link to="/dashboard">
+                    Start Your Free Trial
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="text-white border-white hover:bg-white/10">
                   <Link to="/contact">Contact Sales</Link>
@@ -26,8 +34,27 @@ const CTA = () => {
               <p className="mt-6 text-sm opacity-80">
                 No credit card required. 14-day free trial.
               </p>
+              
+              <div className="mt-10 pt-8 border-t border-white/20 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center">
+                  <h3 className="text-xl font-bold mb-2">Style Adaptation</h3>
+                  <p className="text-sm opacity-90">AI that learns and matches your personal grading style</p>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-bold mb-2">Continuous Learning</h3>
+                  <p className="text-sm opacity-90">Improves with each paper you review and edit</p>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-bold mb-2">Teacher Control</h3>
+                  <p className="text-sm opacity-90">You always have final say on all assessments</p>
+                </div>
+              </div>
             </div>
           </div>
+          
+          {/* Decorative elements */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3 blur-2xl"></div>
+          <div className="absolute bottom-0 left-0 w-40 h-40 bg-white/10 rounded-full translate-y-1/3 -translate-x-1/4 blur-3xl"></div>
         </div>
       </div>
     </section>

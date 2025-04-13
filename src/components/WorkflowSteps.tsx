@@ -1,60 +1,112 @@
 
 import { Step1Icon, Step2Icon, Step3Icon, Step4Icon } from "./StepIcons";
+import { useState, useEffect, useRef } from "react";
 
 const WorkflowSteps = () => {
+  const [activeStep, setActiveStep] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  
+  const startAutomation = () => {
+    intervalRef.current = setInterval(() => {
+      setActiveStep(prev => (prev + 1) % 4);
+    }, 3000);
+  };
+  
+  useEffect(() => {
+    startAutomation();
+    
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, []);
+  
+  const steps = [
+    {
+      icon: Step1Icon,
+      title: "1. Upload Rubric",
+      description: "Upload your rubric or marking scheme that outlines assessment criteria.",
+    },
+    {
+      icon: Step2Icon,
+      title: "2. Upload Papers",
+      description: "Submit student papers individually or in batch for AI assessment.",
+    },
+    {
+      icon: Step3Icon,
+      title: "3. AI Analysis",
+      description: "Our AI analyzes papers against the rubric and adapts to your feedback style.",
+    },
+    {
+      icon: Step4Icon,
+      title: "4. Share Results",
+      description: "Review and share detailed feedback with your students with one click.",
+    },
+  ];
+
   return (
     <section className="py-20 bg-muted/50" id="workflow">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+            Simple Workflow
+          </div>
           <h2 className="text-3xl font-bold mb-4">How GradeAI Works</h2>
           <p className="text-muted-foreground text-lg">
-            Our simple four-step process makes grading papers faster and more consistent.
+            Our AI learns your grading style and preferences to provide feedback that feels like it came directly from you.
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="bg-white p-6 rounded-xl shadow-md text-center">
-            <div className="mx-auto w-16 h-16 mb-4 relative">
-              <div className="absolute inset-0 bg-primary/10 rounded-full"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Step1Icon className="h-8 w-8 text-primary" />
+          {steps.map((step, index) => (
+            <div 
+              key={index}
+              className={`bg-white p-6 rounded-xl shadow-md text-center transition-all duration-500 ${
+                activeStep === index ? 'ring-2 ring-primary/40 shadow-lg transform -translate-y-1' : ''
+              }`}
+              onMouseEnter={() => {
+                if (intervalRef.current) {
+                  clearInterval(intervalRef.current);
+                }
+                setActiveStep(index);
+              }}
+              onMouseLeave={() => {
+                startAutomation();
+              }}
+            >
+              <div className="mx-auto w-16 h-16 mb-4 relative">
+                <div className={`absolute inset-0 ${
+                  activeStep === index ? 'bg-primary/20' : 'bg-primary/10'
+                } rounded-full transition-colors duration-300`}></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <step.icon className={`h-8 w-8 ${
+                    activeStep === index ? 'text-primary' : 'text-primary/80'
+                  } transition-colors duration-300`} />
+                </div>
               </div>
+              <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+              <p className="text-muted-foreground">{step.description}</p>
+              
+              {activeStep === index && (
+                <div className="h-1 w-20 bg-primary/60 mx-auto mt-4 rounded-full"></div>
+              )}
             </div>
-            <h3 className="text-xl font-semibold mb-2">1. Upload Rubric</h3>
-            <p className="text-muted-foreground">Upload your rubric or marking scheme that outlines assessment criteria.</p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-xl shadow-md text-center">
-            <div className="mx-auto w-16 h-16 mb-4 relative">
-              <div className="absolute inset-0 bg-primary/10 rounded-full"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Step2Icon className="h-8 w-8 text-primary" />
-              </div>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">2. Upload Papers</h3>
-            <p className="text-muted-foreground">Submit student papers individually or in batch for AI assessment.</p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-xl shadow-md text-center">
-            <div className="mx-auto w-16 h-16 mb-4 relative">
-              <div className="absolute inset-0 bg-primary/10 rounded-full"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Step3Icon className="h-8 w-8 text-primary" />
-              </div>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">3. AI Analysis</h3>
-            <p className="text-muted-foreground">Our AI analyzes papers against the rubric to generate scores and feedback.</p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-xl shadow-md text-center">
-            <div className="mx-auto w-16 h-16 mb-4 relative">
-              <div className="absolute inset-0 bg-primary/10 rounded-full"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Step4Icon className="h-8 w-8 text-primary" />
-              </div>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">4. Share Results</h3>
-            <p className="text-muted-foreground">Review and share detailed feedback with your students with one click.</p>
+          ))}
+        </div>
+        
+        <div className="mt-16 max-w-3xl mx-auto bg-white p-6 rounded-xl shadow-md">
+          <h3 className="text-xl font-semibold mb-4 text-center">AI That Adapts to Your Style</h3>
+          <p className="text-muted-foreground mb-4">
+            Our advanced machine learning algorithms analyze your previous grading patterns and feedback style, 
+            allowing our AI to mimic your approach. The more you use GradeAI, the better it gets at replicating 
+            your unique assessment style.
+          </p>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">95% Accuracy Rate</span>
+            <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Continuous Learning</span>
+            <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Style Adaptation</span>
+            <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Consistent Feedback</span>
           </div>
         </div>
       </div>
