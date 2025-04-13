@@ -25,23 +25,23 @@ const WorkflowSteps = () => {
   const steps = [
     {
       icon: Step1Icon,
-      title: "1. Upload Rubric",
-      description: "Upload your rubric or marking scheme that outlines assessment criteria.",
+      title: "1. Create Your Class",
+      description: "Upload your class list or attendance sheet. We instantly build your student database.",
     },
     {
       icon: Step2Icon,
-      title: "2. Upload Papers",
-      description: "Submit student papers individually or in batch for AI assessment.",
+      title: "2. Set Up Assignment",
+      description: "Upload a question paper. AI extracts questions and helps you upload a rubric and marking scheme.",
     },
     {
       icon: Step3Icon,
-      title: "3. AI Analysis",
-      description: "Our AI analyzes papers against the rubric and adapts to your feedback style.",
+      title: "3. Submit Student Work",
+      description: "Upload answer sheets and our AI auto-grades each submission using your rubric and feedback style.",
     },
     {
       icon: Step4Icon,
-      title: "4. Share Results",
-      description: "Review and share detailed feedback with your students with one click.",
+      title: "4. Share Results & Analysis",
+      description: "Share detailed feedback per question and comprehensive analysis reports with students in text format.",
     },
   ];
 

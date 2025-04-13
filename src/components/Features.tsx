@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import FeatureCard from "./FeatureCard";
-import { ClockIcon, LineChart, Zap, Shield, Sparkles, BarChart4 } from "lucide-react";
+import { ClockIcon, LineChart, BrainCircuit, Shield, Sparkles, BarChart4 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Features = () => {
@@ -9,33 +9,33 @@ const Features = () => {
   
   const features = [
     {
-      title: "Save Time",
-      description: "Reduce grading time by up to 70% with automated assessment powered by AI that understands your rubric perfectly.",
+      title: "Save 70% Time",
+      description: "Reduce grading time dramatically with AI that understands your rubric perfectly and works at machine speed.",
       icon: ClockIcon,
     },
     {
-      title: "Consistent Grading",
-      description: "Eliminate bias and inconsistency with standardized AI evaluation that maintains your exact grading standards across all papers.",
+      title: "Adaptive AI",
+      description: "Our AI learns your personal grading style and preferences, getting smarter with each paper you review.",
+      icon: BrainCircuit,
+    },
+    {
+      title: "95% Accuracy",
+      description: "Achieve remarkable grading consistency with our AI that maintains your exact standards across all student papers.",
       icon: BarChart4,
     },
     {
-      title: "Detailed Feedback",
-      description: "Provide rich, constructive feedback to help students improve, with AI that learns your feedback style and tone.",
+      title: "Personalized Feedback",
+      description: "Provide rich, constructive feedback that sounds exactly like you wrote it - because our AI mimics your tone and style.",
       icon: LineChart,
     },
     {
-      title: "Easy Integration",
-      description: "Works with your existing workflows and tools with minimal setup. Import from and export to popular LMS platforms in seconds.",
-      icon: Zap,
-    },
-    {
       title: "Privacy Focused",
-      description: "Your data is encrypted and secure, with strict access controls. Student papers never leave our secure processing environment.",
+      description: "Your data is encrypted and secure. Student papers never leave our secure processing environment.",
       icon: Shield,
     },
     {
-      title: "Smart Analytics",
-      description: "Gain insights into student performance and identify areas for improvement with detailed analytics dashboards.",
+      title: "Comprehensive Analytics",
+      description: "Gain insights into student performance with detailed analytics that help identify common misconceptions and learning gaps.",
       icon: Sparkles,
     },
   ];
@@ -72,9 +72,10 @@ const Features = () => {
         
         <div className="mt-16 text-center">
           <div className="max-w-2xl mx-auto mb-8 bg-muted p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-3">Why Our AI Grading Is Better</h3>
+            <h3 className="text-xl font-bold mb-3">Why Teachers Trust Our AI</h3>
             <p className="text-muted-foreground mb-4">
-              Unlike basic AI tools, GradeAI learns from your feedback and adapts to your unique grading style, 
+              Unlike basic AI tools, GradeAI truly understands your assessment philosophy. 
+              It learns from your feedback patterns and adapts to your unique grading style, 
               providing remarkably accurate assessments that feel like they came directly from you.
             </p>
             <Button asChild>

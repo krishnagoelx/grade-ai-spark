@@ -3,6 +3,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 
+  GradeAI Design System
+  ---------------------
+  Color scheme: Primary purple (#4f46e5), Secondary purple (#a855f7), Accent teal (#14b8a6)
+  Fonts: Inter for body text, Poppins for headings
+  Radius: 0.5rem (8px) for standard elements, 9999px for pills/badges
+  Shadows: subtle for cards, stronger for active/hover states
+  Animations: Subtle transitions, float animations, and pulse effects
+*/
+
 @layer base {
   :root {
     --background: 240 45% 98%;

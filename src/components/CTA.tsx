@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 
 const CTA = () => {
   return (
@@ -12,14 +12,34 @@ const CTA = () => {
           <div className="px-6 py-12 md:p-12 text-white relative z-10">
             <div className="max-w-3xl mx-auto text-center">
               <div className="inline-block bg-white/20 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-sm font-medium mb-4">
-                Start Using AI Today
+                AI That Understands Your Teaching Style
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Ready to transform your grading process?
               </h2>
               <p className="text-lg mb-8 opacity-90">
-                Join thousands of educators who are saving time and providing better feedback with GradeAI that adapts to your unique teaching style.
+                Join thousands of educators who are saving time and providing better feedback with GradeAI that learns and adapts to your unique teaching philosophy.
               </p>
+              
+              <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                <div className="flex items-start space-x-2">
+                  <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                  <p className="text-left text-sm md:text-base">AI that continuously learns from your feedback style</p>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                  <p className="text-left text-sm md:text-base">95% accuracy compared to manual grading</p>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                  <p className="text-left text-sm md:text-base">Save up to 70% of your grading time</p>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                  <p className="text-left text-sm md:text-base">Personalized feedback that sounds like you</p>
+                </div>
+              </div>
+              
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 group">
                   <Link to="/dashboard">
